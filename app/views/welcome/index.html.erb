@@ -1,4 +1,38 @@
-<h1>Hello, Rails!</h1>
+<h1>Hello, Rails! <%= @count %></h1>
 
 <%= link_to 'My Blog', controller: 'articles' %>
 <%= link_to 'New article', new_article_path %>
+<div>
+
+<% 10.times do %>
+<div>
+My Card
+</div>
+    <% end %>
+
+
+<form action="/welcome/count" method="POST">
+    <input name="userWords" >
+    <input type="submit" value="Submit"/>
+</form>
+
+
+
+
+
+
+<% 3.times do %>
+<div class="snapContainer">
+<div class="drag">
+test
+</div>
+</div>
+    <% end %>
+    </div>
+<script>
+$('.drag').draggable({
+    snap: '.snapContainer',
+    stack: '.drag',
+    cursor: 'move'
+});
+</script>

@@ -1,6 +1,6 @@
 class ArticlesController < ApplicationController
-    http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
-    
+    #http_basic_authenticate_with name: "dhh", password: "secret", except: [:index, :show]
+    skip_before_action :verify_authenticity_token
     def index
         @articles = Article.all
     end
@@ -14,8 +14,9 @@ class ArticlesController < ApplicationController
         @article = Article.find(params[:id])
     end
     def create
-        #render plain: params[:article].inspect
-        @article = Article.new(article_params)
+        #render plain: params.inspect
+        data = article_params()
+        @article = Article.new(data)
  
         if @article.save
             redirect_to @article
@@ -44,3 +45,4 @@ class ArticlesController < ApplicationController
     end
 end
 
+ 
